@@ -1,7 +1,4 @@
 
-
-
-
 import java.util.*;
 public class Figuras {
     private Vector<Figura> figuras = new Vector<Figura>();
