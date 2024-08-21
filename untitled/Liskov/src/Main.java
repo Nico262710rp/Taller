@@ -6,10 +6,3 @@ public class Main {
     }
 }
 
-public interface RecursoSoloLectura {
-    void load();
-}
-
-public interface RecursoPersistente extends RecursoSoloLectura {
-    void save();
-}
