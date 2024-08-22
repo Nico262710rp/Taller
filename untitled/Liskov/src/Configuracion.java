@@ -1,20 +1,31 @@
+import java.util.*;
+
 public class Configuracion {
-    private Vector<RecursoSoloLectura> recursosLectura = new Vector<RecursoSoloLectura>();
-    private Vector<RecursoPersistente> recursosPersistentes = new Vector<RecursoPersistente>();
+    private Vector<RecursoCargable> confCargable = new Vector<RecursoCargable>();
+    private Vector<RecursoPersistente> confPersistente = new Vector<RecursoPersistente>();
 
     public void cargarConfiguracion() {
-        recursosLectura.add(new ConfiguracionSistema());
-        recursosLectura.add(new ConfiguracionUsuario());
-        recursosLectura.add(new ConfiguracionHoraria());
+        confCargable.add(new ConfiguracionSistema());
+        confCargable.add(new ConfiguracionUsuario());
+        confCargable.add(new ConfiguracionHoraria());
 
-        for (RecursoSoloLectura recurso : recursosLectura) {
+        for (RecursoCargable recurso : confCargable) {
             recurso.load();
+            if (recurso instanceof Notificable) {
+                ((Notificable) recurso).notificar();
+            }
         }
     }
 
     public void salvarConfiguracion() {
-        for (RecursoPersistente recurso : recursosPersistentes) {
+        confPersistente.add(new ConfiguracionSistema());
+        confPersistente.add(new ConfiguracionUsuario());
+
+        for (RecursoPersistente recurso : confPersistente) {
             recurso.save();
+            if (recurso instanceof Notificable) {
+                ((Notificable) recurso).notificar();
+            }
         }
     }
 }
