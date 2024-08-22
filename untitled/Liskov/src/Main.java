@@ -1,8 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        Configuracion config = new Configuracion();
-        config.cargarConfiguracion();
-        config.salvarConfiguracion();
+        Configuracion configuracion = new Configuracion();
+        configuracion.cargarConfiguracion();
+        configuracion.salvarConfiguracion();
     }
 }
-
